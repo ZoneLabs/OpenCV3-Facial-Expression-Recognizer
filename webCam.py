@@ -43,9 +43,9 @@ def Predict_Emotion(filename):
     if len(dets)==0:
         print "Unable to find any face."
         return
-
+    xs=20;
     for k,d in enumerate(dets):
-
+	
         shape=predictor(img,d)
         landmarks=[]
         for i in range(68):
@@ -68,8 +68,8 @@ def Predict_Emotion(filename):
         print ""
 
         font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(cvimg,emotions[int(emo_predicts[0])],(20,20), font, 1,(0,255,255),2)
-
+        cv2.putText(cvimg,emotions[int(emo_predicts[0])],(int(xs),30), font, 1,(0,255,255),2)
+	xs = int(xs) + 200;
         win.add_overlay(shape)
 
     cv2.namedWindow("Output")
